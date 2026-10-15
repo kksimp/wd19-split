@@ -79,3 +79,17 @@ RAM 0x1740 := 2 (RAM only), one monitor replugged at the dock:
   HP, right half on the other.** Link stayed 2-lane HBR3.
 - Remaining issue: macOS only offers the scaled (2x) variant, so the desktop
   looks zoomed. Need a 1x 3840x1080 mode.
+
+## EDID rebuild without a replug (2026-10-15)
+
+- The firmware's main loop (`fd076f`) pops events from a small queue and
+  dispatches them (`fd58ca`); the EDID builder runs from that dispatcher.
+  Extra Ghidra seeding (image start + prologues after `ERET`) was needed to
+  find this code.
+- Tried a "soft replug" (clearing a port's connected flag so the firmware
+  re-detects the monitor). It rebuilt the EDID and the Mac re-read it, but it
+  also left the hub's monitor count wrong (it went up on every attempt), which
+  breaks the split timing. It was removed; a dock power cycle restores
+  everything.
+- Status: replugging one monitor once after the dock loses power remains the
+  supported way to finish switching to split mode.

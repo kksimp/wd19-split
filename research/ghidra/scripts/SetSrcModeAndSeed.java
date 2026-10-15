@@ -50,6 +50,14 @@ public class SetSrcModeAndSeed extends GhidraScript {
 				continue;
 			seeds.add(t);
 		}
+		// Also seed the image start and every PUSH prologue that directly
+		// follows an ERET (0xAA): catches code only reached indirectly, such as
+		// the main loop.
+		seeds.add(base);
+		for (int i = 0; i + 1 < b.length; i++) {
+			if ((b[i] & 0xff) == 0xaa && (b[i + 1] & 0xff) == 0xca)
+				seeds.add(base + i + 1);
+		}
 		int made = 0;
 		for (long t : seeds) {
 			Address a = start.getNewAddress(t);
