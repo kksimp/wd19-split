@@ -1,0 +1,41 @@
+# Allowlist: ignore everything, then opt in only what is meant to be public.
+# Firmware, dumps, vendor installers, Ghidra output (derived from Dell's
+# firmware), device captures and builds are deliberately never tracked.
+/*
+!/.gitignore
+!/README.md
+!/LICENSE
+!/NOTICE.md
+
+!/scripts/
+/scripts/*
+!/scripts/check_secrets.sh
+!/scripts/install_hooks.sh
+
+!/app/
+/app/*
+!/app/Package.swift
+!/app/build_app.sh
+!/app/README.md
+!/app/Sources/
+
+!/research/
+/research/*
+!/research/PHASE1_FINDINGS.md
+!/research/tools/
+/research/tools/*
+!/research/tools/dellpkg_extract.py
+!/research/tools/dispmode.swift
+!/research/ghidra/
+/research/ghidra/*
+!/research/ghidra/scripts/
+
+# Never, anywhere:
+.DS_Store
+.secret-patterns
+*.bin
+*.exe
+*.EXE
+*.cab
+*.gbf
+*.png
