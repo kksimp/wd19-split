@@ -22,8 +22,15 @@ It is a small menu bar app plus a command-line tool, written in Swift and C.
 | Layout | What macOS sees | Notes |
 |---|---|---|
 | **Mirror** | one monitor, copied to both screens | Dell's default |
-| **Ultrawide** | one 3840×1080 display spanning both screens | zero added latency; works with protected video |
+| **Ultrawide** | one 3840×1080 display spanning both screens | zero added latency; works with protected video; left/right order is fixed by the dock (see below) |
 | **Two displays** | two separate 1920×1080 displays | one frame of latency; **Swap sides** toggle; protected video shows black (by design) |
+
+**Swapping sides.** In **Ultrawide**, the dock decides which monitor gets the
+left half and which gets the right, based on the port each one is plugged
+into. The only way to swap them in this layout is to **swap the monitor cables
+at the dock**. (On the WD19 that can mean swapping an HDMI and a DisplayPort
+monitor, so you may need a matching cable or adapter.) **Two displays** has a
+software **Swap sides** toggle instead.
 
 Every layout change shows a **Keep / Revert** prompt that reverts on its own
 after 15 seconds, like System Settings does for resolution changes.
