@@ -31,7 +31,7 @@ final class HubController: ObservableObject {
 	@Published private(set) var busy = false
 
 	/// Hub firmware builds whose RAM layout we have verified (see research/).
-	nonisolated static let verifiedMSTVersions: Set<String> = ["05.06.03"]
+	nonisolated static let verifiedMSTVersions: Set<String> = ["05.06.03", "05.03.10"]
 	/// First bytes of the config block (flash 0x100) on verified builds; checked
 	/// in hub RAM at 0x1700 before any write.
 	nonisolated static let configSignature: [UInt8] = [0x20, 0x00, 0x83, 0x83]

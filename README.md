@@ -38,9 +38,9 @@ after 15 seconds, like System Settings does for resolution changes.
 ## Requirements
 
 - A Mac on macOS 14 or later (developed on an M2 MacBook Pro, macOS 27).
-- A Dell **WD19** (Salomon family) whose MST hub runs firmware **05.06.03**.
-  The app checks the dock type, the hub firmware version and the hub's memory
-  layout, and refuses anything it hasn't been verified against.
+- A Dell **WD19** (Salomon family) whose MST hub runs firmware **05.06.03**
+  or **05.03.10**. The app checks the dock type, the hub firmware version and
+  the hub's memory layout, and refuses anything it hasn't been verified against.
 - Two monitors on the dock. Identical panels work best: the hub combines them
   side by side, and the combined width must stay under 4096 pixels.
 - Xcode command-line tools (Swift 6) to build.
